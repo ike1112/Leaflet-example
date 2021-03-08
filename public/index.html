@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!-- 1: Include Leaflet CSS file in the head section of your document -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+
+    <!-- 2: Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <title>React App</title>
+  </head>
+
+  <body>
+    <!-- 3: where you want your map to be -->
+    <div id="root" style="height: 180px;"></div>
+
+    <script>
+      var mymap = L.map("root").setView([51.505, -0.09], 13);
+
+      L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+        {
+          attribution:
+            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: "mapbox/streets-v11",
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken:
+            "pk.eyJ1IjoiaXNhYmVsa2V5YW4iLCJhIjoiY2ttMDFvZzEwMGlwbjJwcGZnZXIyMWU0OCJ9.a6gFraJwEOYjKN26WkOCDw"
+        }
+      ).addTo(mymap);
+      //add a marker
+      var marker = L.marker([51.5, -0.09]).addTo(mymap);
+      //add a circle
+      var circle = L.circle([51.508, -0.11], {
+        color: "red",
+        fillColor: "#f03",
+        fillOpacity: 0.5,
+        radius: 500
+      }).addTo(mymap);
+      //add a polygon
+      var polygon = L.polygon([
+        [51.509, -0.08],
+        [51.503, -0.06],
+        [51.51, -0.047]
+      ]).addTo(mymap);
+      //add popups
+      marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+      circle.bindPopup("I am a circle.");
+      polygon.bindPopup("I am a polygon.");
+    </script>
+  </body>
+</html>
