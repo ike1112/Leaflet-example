@@ -10,39 +10,19 @@
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+
+    <!-- have to link this leaflet.css file -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
       crossorigin=""
     />
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-      crossorigin=""
-    ></script>
     <title>React Leaflet Example</title>
   </head>
 
   <body>
     <!-- 3: where you want your map to be -->
-    <div id="root" style="height: 480px; width: 600px;"></div>
-    <script>
-      var mymap = L.map("root").setView([51.505, -0.09], 13);
-      L.tileLayer(
-        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-        {
-          attribution:
-            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-          maxZoom: 18,
-          id: "mapbox/streets-v11",
-          tileSize: 512,
-          zoomOffset: -1,
-          accessToken:
-            "pk.eyJ1IjoiaXNhYmVsa2V5YW4iLCJhIjoiY2ttMDFvZzEwMGlwbjJwcGZnZXIyMWU0OCJ9.a6gFraJwEOYjKN26WkOCDw"
-        }
-      ).addTo(mymap);
-    </script>
+    <div id="root"></div>
   </body>
 </html>
