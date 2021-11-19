@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
 import { LocationMaker } from "./LocationMaker";
 
 //set the default position of the map
 const position = [52.639138, -1.137683];
+
 export default function LondonMap() {
   const [data, setData] = useState([]);
 
@@ -32,13 +33,13 @@ export default function LondonMap() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <LocationMaker />
-      {/* loop through the dataset to generate the markers
+      {/* // loop through the dataset to generate the markers */}
       {data.map((crime) => (
         <Marker
           key={crime.id}
           position={[crime.location.latitude, crime.location.longitude]}
         ></Marker>
-      ))} */}
+      ))}
     </MapContainer>
   );
 }
